@@ -95,6 +95,16 @@ vg.field = function(f) {
     }, []);
 };
 
+vg.fieldNew = function(f) {
+  return f.split("\\.")
+    .map(function(d) { return d.split("."); })
+    .reduce(function(a, b) {
+      if (a.length) { a[a.length-1] += "." + b.shift(); }
+      a.push.apply(a, b);
+      return a;
+    }, []);
+};
+
 vg.accessor = function(f) {
   var s;
   return (vg.isFunction(f) || f==null)
@@ -7210,6 +7220,19 @@ vg.headless = {};vg.headless.View = (function() {
 // takes definitions from parsed specification as input
 // returns a view constructor
 vg.headless.View.Factory = function(defs) {
+  return function(opt) {
+    opt = opt || {};
+    var w = defs.width,
+        h = defs.height,
+        p = defs.padding,
+        vp = defs.viewport,
+        r = opt.renderer || "canvas",
+        v = new vg.headless.View(w, h, p, r, vp).defs(defs);
+    if (defs.data.load) v.data(defs.data.load);
+    if (opt.data) v.data(opt.data);
+    return v;
+  };
+};vg.headless.View.NewFactory = function(defs) {
   return function(opt) {
     opt = opt || {};
     var w = defs.width,
