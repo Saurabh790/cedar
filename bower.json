@@ -27,9 +27,5 @@
   "dependencies": {
     "d3": "^3.5.6",
     "vega": "^2.6.1"
-  },
-  "dependenciesNew": {
-    "d3": "^3.5.6",
-    "vega": "^2.6.1"
   }
 }
