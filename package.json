@@ -70,11 +70,11 @@
     "dependenciesN02": {
     "d3": "^3.5.6",
     "vega": "^2.6.1"
-  }
+  },
   "dependenciesN": {
     "d3": "^3.5.6",
     "vega": "^2.6.1"
-  }
+  },
    "dependenciesN04": {
     "d3": "^3.5.6",
     "vega": "^2.6.1"
